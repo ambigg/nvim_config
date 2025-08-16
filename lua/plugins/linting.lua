@@ -8,15 +8,18 @@ return {
 
 		-- if Eslint error configuration not found : change MasonInstall eslint@version or npm i -g eslint at a specific version
 		lint.linters_by_ft = {
-			javascript = {"eslint_d"},
-			typescript = {"eslint_d"},
-			javascriptreact = {"eslint_d"},
-			typescriptreact = {"eslint_d"},
-			python = { "pylint"},
-            rust = {"clippy"},
-            solidity = {"solhint"},
-            java = {"checkstyle"},
-
+			javascript = { "eslint_d" },
+			typescript = { "eslint_d" },
+			javascriptreact = { "eslint_d" },
+			typescriptreact = { "eslint_d" },
+			python = { "pylint" },
+			rust = { "clippy" },
+			solidity = { "solhint" },
+			java = { "checkstyle" },
+			c = { "cpplint" },
+			cpp = { "cpplint" },
+			ruby = { "rubocop" },
+			go = { "golangcilint" },
 		}
 
 		eslint.args = {
@@ -26,10 +29,10 @@ return {
 			"--stdin",
 			"--stdin-filename",
 			function()
-                return vim.fn.expand("%:p")
+				return vim.fn.expand("%:p")
 			end,
 		}
-		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave", "TextChanged" }, {
 			group = lint_augroup,
 			callback = function()
 				lint.try_lint()

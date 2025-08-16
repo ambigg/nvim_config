@@ -1,6 +1,6 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	branch = "master", -- using master to fix issues with deprecated to definition warnings 
+	branch = "master", -- using master to fix issues with deprecated to definition warnings
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -26,11 +26,10 @@ return {
 		})
 
 		-- Keymaps
-		vim.keymap.set("n", "<leader>ff", "<cmd>Telescope oldfiles<CR>", { desc = "Fuzzy find recent files" })
+		vim.keymap.set("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "Fuzzy find recent files" })
 		vim.keymap.set("n", "<leader>pWs", function()
 			local word = vim.fn.expand("<cWORD>")
 			builtin.grep_string({ search = word })
 		end, { desc = "Find Connected Words under cursor" })
-
 	end,
 }
