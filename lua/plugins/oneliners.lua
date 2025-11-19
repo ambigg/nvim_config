@@ -91,4 +91,49 @@ return {
 		config = true,
 		cmd = "Glow",
 	},
+	-- indent-blankline.lua
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {
+			indent = {
+				char = "│",
+				tab_char = "│",
+			},
+			scope = {
+				enabled = true,
+				show_start = true,
+				show_end = false,
+			},
+		},
+	},
+	-- colorizer.lua
+	{
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup({
+				"*", -- todas las extensiones
+				css = { rgb_fn = true },
+				html = { names = false },
+			})
+		end,
+	},
+	-- dressing.lua
+	{
+		"stevearc/dressing.nvim",
+		event = "VeryLazy",
+		opts = {},
+	},
+	-- dropbar.lua
+	{
+		"Bekaboo/dropbar.nvim",
+		dependencies = { "nvim-telescope/telescope-fzf-native.nvim" },
+	},
+	-- twilight.lua
+	{
+		"folke/twilight.nvim",
+		opts = {
+			context = 10,
+		},
+	},
 }

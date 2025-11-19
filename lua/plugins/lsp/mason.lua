@@ -1,14 +1,11 @@
 return {
 	"williamboman/mason.nvim",
-	lazy = false,
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		"hrsh7th/cmp-nvim-lsp",
-		"neovim/nvim-lspconfig",
 	},
 	config = function()
-		-- import mason and mason_lspconfig
+		-- import mason
 		local mason = require("mason")
 		local mason_lspconfig = require("mason-lspconfig")
 		local mason_tool_installer = require("mason-tool-installer")
@@ -25,8 +22,7 @@ return {
 		})
 
 		mason_lspconfig.setup({
-			automatic_enable = false,
-			-- servers for mason to install
+			-- list of servers for mason to install
 			ensure_installed = {
 				"lua_ls",
 				"html",
@@ -35,6 +31,8 @@ return {
 				"marksman",
 				"rust_analyzer",
 				"pyright",
+				"ts_ls", -- Cambiado de tsserver a ts_ls
+				"denols",
 				"jdtls",
 				"solidity_ls",
 				"clangd",
@@ -50,15 +48,14 @@ return {
 				"stylua", -- lua formatter
 				"isort", -- python formatter
 				"pylint", -- python linter
-				"rustfmt",
-				"solhint",
-				"eslint_d",
-				"checkstyle",
-				{ "eslint_d", version = "13.1.2" },
-				"clang-format",
-				"cpplint",
-				"rubocop",
-				"golangci-lint",
+				"rustfmt", -- rust formatter
+				"solhint", -- solidity linter
+				"eslint_d", -- js linter
+				"checkstyle", -- java linter
+				"clang-format", -- c/c++ formatter
+				"cpplint", -- c/c++ linter
+				"rubocop", -- ruby linter
+				"golangci-lint", -- go linter
 			},
 		})
 	end,

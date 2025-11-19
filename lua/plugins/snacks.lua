@@ -29,7 +29,6 @@ return {
 
             { "<leader>lg", function() require("snacks").lazygit() end,            desc = "Lazygit" },
             { "<leader>rN", function() require("snacks").rename.rename_file() end, desc = "Fast Rename Current File" },
-            { "<leader>dB", function() require("snacks").bufdelete() end,          desc = "Delete or Close Buffer" },
 
 
             { "<leader>FF", function() require("snacks").picker.files() end,       desc = "Find Files" },

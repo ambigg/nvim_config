@@ -7,15 +7,16 @@ return {
 			-- Desactivar netrw (explorador de archivos nativo de vim)
 			disable_netrw = true,
 			hijack_netrw = true,
-
 			-- Vista y apariencia
 			view = {
 				width = 30,
 				side = "left",
 				number = false,
 				relativenumber = false,
+				-- Permitir redimensionamiento con el mouse
+				adaptive_size = false,
+				preserve_window_proportions = true,
 			},
-
 			-- Renderizado
 			renderer = {
 				highlight_git = false,
@@ -46,18 +47,15 @@ return {
 					},
 				},
 			},
-
 			-- Filtros
 			filters = {
 				dotfiles = false,
 				custom = { ".git", "node_modules", ".cache" },
 			},
-
 			-- Git
 			git = {
 				enable = false,
 			},
-
 			-- Acciones
 			actions = {
 				open_file = {
@@ -65,13 +63,15 @@ return {
 					resize_window = true,
 				},
 			},
-
 			-- Desactivar diagnósticos
 			diagnostics = {
 				enable = false,
 			},
 		})
-
+		
+		-- Configurar el separador más grueso usando fillchars
+		vim.opt.fillchars:append({ vert = '█' })  -- Separador grueso
+		
 		-- Keymaps básicos
 		vim.keymap.set("n", "<C-a>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 		vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })

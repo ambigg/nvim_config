@@ -1,6 +1,29 @@
 return {
     -- Mini Nvim
     {"echasnovski/mini.nvim", version = false },
+    {
+        'echasnovski/mini.animate',
+        event = "VeryLazy",
+        config = function()
+            local animate = require('mini.animate')
+            animate.setup({
+                cursor = {
+                    enable = true,
+                    timing = animate.gen_timing.exponential({ 
+                        easing = 'out',
+                        duration = 30,
+                        unit = 'total'
+                    })
+                },
+                scroll = {
+                    enable =false,  -- Solo queremos animar el cursor
+                },
+                resize = { enable = false },
+                open = { enable = false },
+                close = { enable = false },
+            })
+        end,
+    },
     -- Comments
     {
         'echasnovski/mini.comment',

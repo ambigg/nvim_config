@@ -86,10 +86,10 @@ return {
                 dapui.close()
             end
             
-            -- Keymaps completos para debugging
+            -- Keymaps completos para debugging (CAMBIADOS A <leader>D)
             local opts = { noremap = true, silent = true }
             
-            -- Teclas de función principales
+            -- Teclas de función principales (estas se mantienen igual)
             vim.keymap.set("n", "<F5>", dap.continue, opts)                    -- Start/Continue
             vim.keymap.set("n", "<F6>", function()                            -- Stop y cerrar
                 dap.terminate()
@@ -100,52 +100,52 @@ return {
             vim.keymap.set("n", "<F11>", dap.step_into, opts)                 -- Step into
             vim.keymap.set("n", "<F12>", dap.step_out, opts)                  -- Step out
             
-            -- Breakpoints avanzados
-            vim.keymap.set("n", "<leader>bb", dap.toggle_breakpoint, opts)    -- Toggle breakpoint
-            vim.keymap.set("n", "<leader>bc", function()                      -- Conditional breakpoint
+            -- Breakpoints avanzados (CAMBIADO A <leader>D)
+            vim.keymap.set("n", "<leader>Db", dap.toggle_breakpoint, opts)    -- Toggle breakpoint
+            vim.keymap.set("n", "<leader>Dc", function()                      -- Conditional breakpoint
                 dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
             end, opts)
-            vim.keymap.set("n", "<leader>bl", function()                      -- Log point
+            vim.keymap.set("n", "<leader>Dl", function()                      -- Log point
                 dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
             end, opts)
-            vim.keymap.set("n", "<leader>bC", dap.clear_breakpoints, opts)    -- Clear all breakpoints
+            vim.keymap.set("n", "<leader>DC", dap.clear_breakpoints, opts)    -- Clear all breakpoints
             
-            -- Control de ejecución  
-            vim.keymap.set("n", "<leader>dc", dap.continue, opts)             -- Continue
-            vim.keymap.set("n", "<leader>dr", dap.restart, opts)              -- Restart
-            vim.keymap.set("n", "<leader>dq", function()                      -- Quit
+            -- Control de ejecución (CAMBIADO A <leader>D)
+            vim.keymap.set("n", "<leader>Dr", dap.continue, opts)             -- Continue (cambié de dc a Dr para "run")
+            vim.keymap.set("n", "<leader>DR", dap.restart, opts)              -- Restart
+            vim.keymap.set("n", "<leader>Dq", function()                      -- Quit
                 dap.terminate()
                 dapui.close()
             end, opts)
             
-            -- Navegación
-            vim.keymap.set("n", "<leader>ds", dap.step_over, opts)            -- Step over
-            vim.keymap.set("n", "<leader>di", dap.step_into, opts)            -- Step into
-            vim.keymap.set("n", "<leader>do", dap.step_out, opts)             -- Step out
-            vim.keymap.set("n", "<leader>dk", dap.up, opts)                   -- Up stack
-            vim.keymap.set("n", "<leader>dj", dap.down, opts)                 -- Down stack
+            -- Navegación (CAMBIADO A <leader>D)
+            vim.keymap.set("n", "<leader>Ds", dap.step_over, opts)            -- Step over
+            vim.keymap.set("n", "<leader>Di", dap.step_into, opts)            -- Step into
+            vim.keymap.set("n", "<leader>Do", dap.step_out, opts)             -- Step out
+            vim.keymap.set("n", "<leader>Dk", dap.up, opts)                   -- Up stack
+            vim.keymap.set("n", "<leader>Dj", dap.down, opts)                 -- Down stack
             
-            -- UI y ventanas
-            vim.keymap.set("n", "<leader>du", dapui.toggle, opts)             -- Toggle UI
-            vim.keymap.set("n", "<leader>dv", function()                      -- Hover (cambié de dh)
+            -- UI y ventanas (CAMBIADO A <leader>D)
+            vim.keymap.set("n", "<leader>Du", dapui.toggle, opts)             -- Toggle UI
+            vim.keymap.set("n", "<leader>Dv", function()                      -- Hover
                 require('dap.ui.widgets').hover()
             end, opts)
-            vim.keymap.set("n", "<leader>dp", function()                      -- Preview
+            vim.keymap.set("n", "<leader>Dp", function()                      -- Preview
                 require('dap.ui.widgets').preview()
             end, opts)
             
-            -- REPL y evaluación
-            vim.keymap.set("n", "<leader>dt", dap.repl.toggle, opts)          -- Toggle REPL
-            vim.keymap.set("v", "<leader>dE", function()                      -- Evaluate selection (cambié de de)
+            -- REPL y evaluación (CAMBIADO A <leader>D)
+            vim.keymap.set("n", "<leader>Dt", dap.repl.toggle, opts)          -- Toggle REPL
+            vim.keymap.set("v", "<leader>De", function()                      -- Evaluate selection
                 dapui.eval()
             end, opts)
-            vim.keymap.set("n", "<leader>dE", function()                      -- Evaluate expression (cambié de de)
+            vim.keymap.set("n", "<leader>De", function()                      -- Evaluate expression
                 local expr = vim.fn.input('Expression: ')
                 dapui.eval(expr)
             end, opts)
             
-            -- Funciones útiles adicionales
-            vim.keymap.set("n", "<leader>dw", function()                      -- Add watch
+            -- Funciones útiles adicionales (CAMBIADO A <leader>D)
+            vim.keymap.set("n", "<leader>Dw", function()                      -- Add watch
                 local expr = vim.fn.input('Watch expression: ')
                 if expr ~= "" then
                     dapui.elements.watches.add(expr)
